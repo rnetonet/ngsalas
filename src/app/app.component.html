@@ -1,9 +1,16 @@
-<div class="tw-container tw-mx-auto tw-my-5">
-  <h1 class="tw-bg-gradient-to-r tw-from-blue-600 tw-via-green-500 tw-to-indigo-400 tw-inline-block tw-text-transparent tw-bg-clip-text tw-text-4xl">
-    NgSalas
-  </h1>
+<div class="container mx-auto my-5">
+  <div class="flex flex-row flex-wrap justify-start items-center">
+    <div class="basis-auto flex-initial mr-10">
+      <h1 class="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text text-4xl">
+        NgSalas
+      </h1>
+    </div>
+    <div class="flex-1">
+      <app-barra-superior></app-barra-superior>
+    </div>
+  </div>
 
-  <hr class="tw-my-5">
+  <hr class="my-5">
 
   <router-outlet></router-outlet>
 </div>

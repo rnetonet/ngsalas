@@ -18,8 +18,8 @@ export class CalendarioComponent implements OnInit {
 
   readonly calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin],
-    themeSystem: 'bootstrap5',
     initialView: 'dayGridMonth',
+    themeSystem: 'standard',
     locale: 'pt-br',
     buttonText: {
       today: 'hoje',
