@@ -1,14 +1,58 @@
-<label for="sala" class="mr-3">
-  <span>Sala:</span>
-</label>
-<select id="sala" name="sala" class="select select-bordered w-full md:w-1/6">
-  <option value="sala1">Sala 1</option>
-  <option value="sala2">Sala 2</option>
-  <option value="sala3">Sala 3</option>
-  <option value="sala4">Sala 4</option>
-</select>
+<div class="flex items-center justify-center">
+  <span class="mr-3">Sala:</span>
+  <select id="sala" name="sala" class="select select-bordered w-full md:w-1/6">
+    <option value="sala1">Sala 1</option>
+    <option value="sala2">Sala 2</option>
+    <option value="sala3">Sala 3</option>
+    <option value="sala4">Sala 4</option>
+  </select>
 
-<label for="pesquisar" class="ml-10 mr-3">Pesquisar:</label>
-<input id="pesquisar" name="pesquisar" type="text" class="input input-bordered w-full md:w-1/6">
+  <span class="mr-3 ml-3">Pesquisar:</span>
+  <input id="pesquisar" name="pesquisar" type="text" class="input input-bordered w-full md:w-1/6">
 
-<input type="button" value="Pesquisar" class="ml-5 btn">
+  <input type="button" value="Pesquisar" class="ml-5 btn">
+  <div class="ml-auto">
+    <input type="button" value="Adicionar" class="btn  btn-accent" (click)="this.modalFormAdicionar()">
+  </div>
+</div>
+
+<dialog #modal class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+
+    <div role="tablist" class="tabs tabs-lifted">
+      <input
+        type="radio"
+        name="tabs"
+        role="tab"
+        class="tab"
+        aria-label="Salas"
+        checked="checked"
+      />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+        <form [formGroup]="formSala" (ngSubmit)="cadastrarSala()">
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Qual o nome da sala?</span>
+            </div>
+            <input type="text" required="true" formControlName="descricao" name="descricao" class="input input-bordered w-full" />
+          </label>
+          <button class="btn btn-primary mt-3">Salvar</button>
+        </form>
+      </div>
+
+      <input
+        type="radio"
+        name="tabs"
+        role="tab"
+        class="tab"
+        aria-label="Eventos"
+      />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+        Form Evento
+      </div>
+    </div>
+  </div>
+</dialog>

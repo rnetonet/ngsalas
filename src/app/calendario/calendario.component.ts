@@ -3,11 +3,12 @@ import { FullCalendarModule, FullCalendarComponent } from '@fullcalendar/angular
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarioService } from './calendario.service';
+import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [FullCalendarModule],
+  imports: [AppModule, FullCalendarModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.scss',
 })
