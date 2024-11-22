@@ -1,18 +1,10 @@
 <div class="flex items-center justify-center">
-  <span class="mr-3">Sala:</span>
-  <select id="sala" name="sala" class="select select-bordered w-full md:w-1/6">
-    <option value="sala1">Sala 1</option>
-    <option value="sala2">Sala 2</option>
-    <option value="sala3">Sala 3</option>
-    <option value="sala4">Sala 4</option>
-  </select>
-
   <span class="mr-3 ml-3">Pesquisar:</span>
   <input id="pesquisar" name="pesquisar" type="text" class="input input-bordered w-full md:w-1/6">
 
   <input type="button" value="Pesquisar" class="ml-5 btn">
   <div class="ml-auto">
-    <input type="button" value="Adicionar" class="btn  btn-accent" (click)="this.modalFormAdicionar()">
+    <input type="button" value="Adicionar" class="btn  btn-accent" (click)="this.abrirFormGestao()">
   </div>
 </div>
 
@@ -28,31 +20,27 @@
         name="tabs"
         role="tab"
         class="tab"
-        aria-label="Salas"
+        aria-label="Evento"
         checked="checked"
       />
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <form [formGroup]="formSala" (ngSubmit)="cadastrarSala()">
+        <form [formGroup]="formEvento" (ngSubmit)="this.cadastrarEvento()">
           <label class="form-control w-full">
             <div class="label">
-              <span class="label-text">Qual o nome da sala?</span>
+              <span class="label-text">Qual a descrição do evento?</span>
             </div>
-            <input type="text" required="true" formControlName="descricao" name="descricao" class="input input-bordered w-full" />
+            <input type="text" required="true" formControlName="title" name="title" class="input input-bordered w-full" autofocus />
+          </label>
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Qual a data do evento?</span>
+            </div>
+            <input type="date" required="true" formControlName="date" name="date" class="input input-bordered w-full" autofocus />
           </label>
           <button class="btn btn-primary mt-3">Salvar</button>
         </form>
       </div>
 
-      <input
-        type="radio"
-        name="tabs"
-        role="tab"
-        class="tab"
-        aria-label="Eventos"
-      />
-      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        Form Evento
-      </div>
     </div>
   </div>
 </dialog>

@@ -29,16 +29,17 @@ export class CalendarioComponent implements OnInit {
       day: 'dia',
       list: 'lista',
     },
-    eventClick: (e) => this.handleEventClick(e),
   };
 
-  handleEventClick(e: any) {
-    console.log(e.event);
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.calendarService.obterEventos().subscribe((eventos) => {
-      this.calendarOptions.events = eventos;
+      this.calendarComponent.getApi().removeAllEvents();
+      eventos.forEach((evento) => {
+        this.calendarComponent.getApi().addEvent(evento);
+      });
     });
   }
 }

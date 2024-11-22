@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { IEvento } from '../models/ievento.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalendarioService {
-  obterEventos() {
-    const eventos = [
-      { title: 'event 1', date: '2024-11-19' },
-      { title: 'event 2', date: '2024-11-20' },
-      { title: 'event 3', date: '2024-11-21' },
-    ];
-    return of(eventos);
+  private eventos: IEvento[] = [];
+  private eventosFiltrados: IEvento[] = [];
+
+  private $eventos: BehaviorSubject<IEvento[]> = new BehaviorSubject<IEvento[]>(this.eventos);
+
+  obterEventos(filtro: string = ''): BehaviorSubject<IEvento[]> {
+    if (filtro != '') {
+      this.eventosFiltrados = this.eventos.filter((evento) => evento.title.includes(filtro));
+      this.$eventos.next(this.eventosFiltrados);
+      return this.$eventos;
+    }
+
+    return this.$eventos;
+  }
+
+  adicionarEvento(evento: IEvento) {
+    this.eventos.push(evento);
+    this.$eventos.next(this.eventos);
   }
 }
